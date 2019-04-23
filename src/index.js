@@ -314,10 +314,10 @@ class JSONInput extends Component {
                                 flex          : 1,
                                 margin        : 0,
                                 padding       : '5px',
-                                overflowX     : 'hidden',
+                                overflowX     : 'auto',
                                 overflowY     : 'auto',
                                 wordWrap      : 'break-word',
-                                whiteSpace    : 'pre-line',
+                                whiteSpace    : 'pre',
                                 color         : '#D4D4D4',
                                 outline       : 'none',
                                 ...style.contentBox
@@ -361,8 +361,6 @@ class JSONInput extends Component {
                     display        : 'flex',
                     flexDirection  : 'column',
                     justifyContent : 'center',
-                    overflowX      : 'auto',
-                    whiteSpace     : 'pre',
                     ...style.errorMessage
                 }}
             >
