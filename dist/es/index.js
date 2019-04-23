@@ -532,7 +532,9 @@ class JSONInput extends Component {
     const ctrlOrMetaIsPressed = event.ctrlKey || event.metaKey;
     if (this.props.viewOnly && !ctrlOrMetaIsPressed) this.stopEvent(event);
     if (!ctrlOrMetaIsPressed) this.setUpdateTime();
-    setTimeout(this.updateWithoutCheck);
+    setTimeout(() => {
+      this.updateWithoutCheck();
+    });
   }
 
   onKeyDown(event) {

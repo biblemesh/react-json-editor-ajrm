@@ -598,10 +598,14 @@ function (_Component) {
   }, {
     key: "onKeyPress",
     value: function onKeyPress(event) {
+      var _this5 = this;
+
       var ctrlOrMetaIsPressed = event.ctrlKey || event.metaKey;
       if (this.props.viewOnly && !ctrlOrMetaIsPressed) this.stopEvent(event);
       if (!ctrlOrMetaIsPressed) this.setUpdateTime();
-      setTimeout(this.updateWithoutCheck);
+      setTimeout(function () {
+        _this5.updateWithoutCheck();
+      });
     }
   }, {
     key: "onKeyDown",
