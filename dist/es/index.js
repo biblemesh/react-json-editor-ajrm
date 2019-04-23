@@ -31,6 +31,7 @@ class JSONInput extends Component {
     this.tokenize = this.tokenize.bind(this);
     this.onKeyPress = this.onKeyPress.bind(this);
     this.onKeyDown = this.onKeyDown.bind(this);
+    this.onKeyUp = this.onKeyUp.bind(this);
     this.onPaste = this.onPaste.bind(this);
     this.stopEvent = this.stopEvent.bind(this);
     this.refContent = null;
@@ -291,6 +292,7 @@ class JSONInput extends Component {
       dangerouslySetInnerHTML: this.createMarkup(markupText),
       onKeyPress: this.onKeyPress,
       onKeyDown: this.onKeyDown,
+      onKeyUp: this.onKeyUp,
       onClick: this.onClick,
       onBlur: this.onBlur,
       onScroll: this.onScroll,
@@ -536,6 +538,18 @@ class JSONInput extends Component {
     setTimeout(() => {
       this.updateWithoutCheck();
     });
+  }
+
+  onKeyUp(event) {
+    switch (event.key) {
+      case 'Tab':
+      case 'Backspace':
+      case 'Delete':
+        setTimeout(() => {
+          this.updateWithoutCheck();
+        });
+        break;
+    }
   }
 
   onKeyDown(event) {

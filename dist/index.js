@@ -69,6 +69,7 @@ function (_Component) {
     _this.tokenize = _this.tokenize.bind((0, _assertThisInitialized2.default)((0, _assertThisInitialized2.default)(_this)));
     _this.onKeyPress = _this.onKeyPress.bind((0, _assertThisInitialized2.default)((0, _assertThisInitialized2.default)(_this)));
     _this.onKeyDown = _this.onKeyDown.bind((0, _assertThisInitialized2.default)((0, _assertThisInitialized2.default)(_this)));
+    _this.onKeyUp = _this.onKeyUp.bind((0, _assertThisInitialized2.default)((0, _assertThisInitialized2.default)(_this)));
     _this.onPaste = _this.onPaste.bind((0, _assertThisInitialized2.default)((0, _assertThisInitialized2.default)(_this)));
     _this.stopEvent = _this.stopEvent.bind((0, _assertThisInitialized2.default)((0, _assertThisInitialized2.default)(_this)));
     _this.refContent = null;
@@ -342,6 +343,7 @@ function (_Component) {
         dangerouslySetInnerHTML: this.createMarkup(markupText),
         onKeyPress: this.onKeyPress,
         onKeyDown: this.onKeyDown,
+        onKeyUp: this.onKeyUp,
         onClick: this.onClick,
         onBlur: this.onBlur,
         onScroll: this.onScroll,
@@ -611,6 +613,21 @@ function (_Component) {
       setTimeout(function () {
         _this6.updateWithoutCheck();
       });
+    }
+  }, {
+    key: "onKeyUp",
+    value: function onKeyUp(event) {
+      var _this7 = this;
+
+      switch (event.key) {
+        case 'Tab':
+        case 'Backspace':
+        case 'Delete':
+          setTimeout(function () {
+            _this7.updateWithoutCheck();
+          });
+          break;
+      }
     }
   }, {
     key: "onKeyDown",
