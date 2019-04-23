@@ -361,8 +361,8 @@ class JSONInput extends Component {
                     display        : 'flex',
                     flexDirection  : 'column',
                     justifyContent : 'center',
-                    overflowX:     : 'auto',
-                    whiteSpace:    : 'pre',
+                    overflowX      : 'auto',
+                    whiteSpace     : 'pre',
                     ...style.errorMessage
                 }}
             >
