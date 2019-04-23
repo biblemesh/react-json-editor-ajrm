@@ -516,6 +516,19 @@ class JSONInput extends Component {
         this.updateTime = false;
         if(updateCursorPosition) this.setCursorPosition(cursorPosition);
     }
+    updateWithoutCheck(){
+        const
+            container = this.refContent,
+            data      = this.tokenize(container);
+        if('onUncheckedChange' in this.props) this.props.onUncheckedChange({
+            plainText  : data.indented,
+            markupText : data.markup,
+            json       : data.json,
+            jsObject   : data.jsObject,
+            lines      : data.lines,
+            error      : data.error
+        });
+    }
     scheduledUpdate(){
         if('onKeyPressUpdate' in this.props) if(this.props.onKeyPressUpdate===false) return;
         const { updateTime } = this;
@@ -536,6 +549,7 @@ class JSONInput extends Component {
         const ctrlOrMetaIsPressed = event.ctrlKey || event.metaKey;
         if(this.props.viewOnly && !ctrlOrMetaIsPressed) this.stopEvent(event);
         if (!ctrlOrMetaIsPressed) this.setUpdateTime();
+        this.updateWithoutCheck();
     }
     onKeyDown(event){
         const viewOnly = !!this.props.viewOnly;
@@ -572,14 +586,14 @@ class JSONInput extends Component {
             var text = event.clipboardData.getData('text/plain');
             document.execCommand('insertText', false, text);
         }
-        this.update();
+        this.updateWithoutCheck();
     }
     onClick(){ 
         if('viewOnly' in this.props) if(this.props.viewOnly) return;
     }
     onBlur(){
         if('viewOnly' in this.props) if(this.props.viewOnly) return;
-        this.update(0,false);
+        this.updateWithoutCheck();
     }
     onScroll(event){
         this.refLabels.scrollTop = event.target.scrollTop;
