@@ -524,7 +524,8 @@ class JSONInput extends Component {
             json       : data.json,
             jsObject   : data.jsObject,
             lines      : data.lines,
-            error      : data.error
+            error      : data.error,
+            update     : () => this.update(),
         });
     }
     scheduledUpdate(){

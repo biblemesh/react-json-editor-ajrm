@@ -562,6 +562,8 @@ function (_Component) {
   }, {
     key: "updateWithoutCheck",
     value: function updateWithoutCheck() {
+      var _this5 = this;
+
       var container = this.refContent,
           data = this.tokenize(container);
       if ('onUncheckedChange' in this.props) this.props.onUncheckedChange({
@@ -570,7 +572,10 @@ function (_Component) {
         json: data.json,
         jsObject: data.jsObject,
         lines: data.lines,
-        error: data.error
+        error: data.error,
+        update: function update() {
+          return _this5.update();
+        }
       });
     }
   }, {
@@ -598,13 +603,13 @@ function (_Component) {
   }, {
     key: "onKeyPress",
     value: function onKeyPress(event) {
-      var _this5 = this;
+      var _this6 = this;
 
       var ctrlOrMetaIsPressed = event.ctrlKey || event.metaKey;
       if (this.props.viewOnly && !ctrlOrMetaIsPressed) this.stopEvent(event);
       if (!ctrlOrMetaIsPressed) this.setUpdateTime();
       setTimeout(function () {
-        _this5.updateWithoutCheck();
+        _this6.updateWithoutCheck();
       });
     }
   }, {
