@@ -281,10 +281,10 @@ class JSONInput extends Component {
         flex: 1,
         margin: 0,
         padding: '5px',
-        overflowX: 'hidden',
+        overflowX: 'auto',
         overflowY: 'auto',
         wordWrap: 'break-word',
-        whiteSpace: 'pre-line',
+        whiteSpace: 'pre',
         color: '#D4D4D4',
         outline: 'none'
       }, style.contentBox),
@@ -321,9 +321,7 @@ class JSONInput extends Component {
         overflowWrap: 'break-word',
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'center',
-        overflowX: 'auto',
-        whiteSpace: 'pre'
+        justifyContent: 'center'
       }, style.errorMessage)
     }, format(locale.format, error));
   }
@@ -534,7 +532,7 @@ class JSONInput extends Component {
     const ctrlOrMetaIsPressed = event.ctrlKey || event.metaKey;
     if (this.props.viewOnly && !ctrlOrMetaIsPressed) this.stopEvent(event);
     if (!ctrlOrMetaIsPressed) this.setUpdateTime();
-    this.updateWithoutCheck();
+    setTimeout(this.updateWithoutCheck);
   }
 
   onKeyDown(event) {

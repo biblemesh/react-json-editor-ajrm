@@ -332,10 +332,10 @@ function (_Component) {
           flex: 1,
           margin: 0,
           padding: '5px',
-          overflowX: 'hidden',
+          overflowX: 'auto',
           overflowY: 'auto',
           wordWrap: 'break-word',
-          whiteSpace: 'pre-line',
+          whiteSpace: 'pre',
           color: '#D4D4D4',
           outline: 'none'
         }, style.contentBox),
@@ -373,9 +373,7 @@ function (_Component) {
           overflowWrap: 'break-word',
           display: 'flex',
           flexDirection: 'column',
-          justifyContent: 'center',
-          overflowX: 'auto',
-          whiteSpace: 'pre'
+          justifyContent: 'center'
         }, style.errorMessage)
       }, (0, _locale.format)(locale.format, error));
     }
@@ -603,7 +601,7 @@ function (_Component) {
       var ctrlOrMetaIsPressed = event.ctrlKey || event.metaKey;
       if (this.props.viewOnly && !ctrlOrMetaIsPressed) this.stopEvent(event);
       if (!ctrlOrMetaIsPressed) this.setUpdateTime();
-      this.updateWithoutCheck();
+      setTimeout(this.updateWithoutCheck);
     }
   }, {
     key: "onKeyDown",
